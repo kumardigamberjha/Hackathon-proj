@@ -11,7 +11,7 @@ DevSmashers
 #Team number
 31
 #Team members
-digamber, himanshu, tript, nitin
+digamber DCH-8168, himanshu- DCH-8164, tript DCH-8021, nitin DCH-8071
 #Theme
 Open Innovation
 
