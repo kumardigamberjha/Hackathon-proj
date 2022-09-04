@@ -1,0 +1,70 @@
+{% extends 'website/index.html' %}
+
+{% block exnav %}
+<style>
+    .scat {
+        display: flex;
+        justify-content: space-evenly;
+    }
+</style>
+{% endblock exnav %}
+
+{% block navbar %}
+<header id="nav-wrapper">
+    <nav id="nav">
+        <div class="nav left">
+            <span class="gradient skew">
+                <h1 class="logo un-skew"><a href="/">American Housing Solution</a></h1>
+            </span>
+            <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+        </div>
+        <div class="nav right">
+            <a href="/" class="nav-link"><span class="nav-link-span"><span
+                        class="u-nav">Home</span></span></a>
+            <a href="{% url 'price_prediction' %}" class="nav-link"><span class="nav-link-span"><span
+                        class="u-nav">Predict Price</span></span></a>
+            <a href="{% url 'show_all_data' %}" class="nav-link active"><span class="nav-link-span"><span
+                            class="u-nav">Plots</span></span></a>
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="nav-link"><span class="nav-link-span"><span
+                class="u-nav">Logout</span></span></a>
+
+            {% else %}
+            <a href="{% url 'login' %}" class="nav-link"><span class="nav-link-span"><span
+                class="u-nav">Login</span></span></a>
+            <a href="{% url 'signup' %}" class="nav-link"><span class="nav-link-span"><span
+                            class="u-nav">SignUp</span></span></a>
+            {% endif %}
+        </div>
+    </nav>
+</header>
+{% endblock navbar %}
+
+
+{% block content %}
+<div style="margin-top: 12vh;" class="container">
+    <h1 style="text-align: center; color: brown; font-weight: 800; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Plots</h1>
+
+    <div class="scat">
+        <img src="../../../static/img/bathroom_plot.png" alt="">
+        <h3 style="margin: 35px 145px;">X = Bedrooms Y = Price</h3>
+    </div>
+    <div class="scat">
+        <img src="../../../static/img/bedroom.png" width="820" alt="">
+        <h3 style="margin: -30px 145px; margin-bottom: 35px;">X = Bathrooms Y = Price</h3>
+    </div>
+    <div class="scat">
+        <img src="../../../static/img/plot3.png" width="820" alt="">
+        <h3 style="margin: 0 145px;margin-bottom: 75px;">Price Histogram</h3>
+    </div>
+    <div class="scat">
+        <img src="../../../static/img/plot6.png" width="820" alt="">
+        <h3 style="margin: 0 145px; margin-bottom: 55px;">Bedroom And Bathroom</h3>
+    </div>
+    <div class="scat">
+        <img src="../../../static/img/plot5.png" width="820" alt="">
+        <h3 style="margin: 0 145px;">Living Per Sqft and price over density</h3>
+    </div>
+</div>
+{% endblock content %}

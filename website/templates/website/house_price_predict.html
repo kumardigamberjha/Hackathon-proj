@@ -1,0 +1,57 @@
+{% extends 'website/index.html' %}
+
+{% block title %}
+    <title>Price Prediction</title>
+{% endblock title %}
+
+{% block exstyle %}
+    <style>
+        #showdata{
+            color: white;
+        }
+    </style>
+{% endblock exstyle %}
+
+{% block navbar %}
+<header id="nav-wrapper">
+    <nav id="nav">
+        <div class="nav left">
+            <span class="gradient skew">
+                <h1 class="logo un-skew"><a href="/">American Housing Solution</a></h1>
+            </span>
+            <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+        </div>
+        <div class="nav right">
+            <a href="/" class="nav-link"><span class="nav-link-span"><span
+                        class="u-nav">Home</span></span></a>
+            <a href="{% url 'price_prediction' %}" class="nav-link active"><span class="nav-link-span"><span
+                        class="u-nav">Predict Price</span></span></a>
+            <a href="{% url 'show_all_data' %}" class="nav-link"><span class="nav-link-span"><span
+                            class="u-nav">Plots</span></span></a>
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="nav-link"><span class="nav-link-span"><span
+                class="u-nav">Logout</span></span></a>
+
+            {% else %}
+            <a href="{% url 'login' %}" class="nav-link"><span class="nav-link-span"><span
+                class="u-nav">Login</span></span></a>
+            <a href="{% url 'signup' %}" class="nav-link"><span class="nav-link-span"><span
+                            class="u-nav">SignUp</span></span></a>
+            {% endif %}
+        </div>
+    </nav>
+</header>
+{% endblock navbar %}
+
+{% block content %}
+
+        <section id="home">
+            <div id="text-content" style="margin-left:-80px">
+                <a href="{% url 'show_plot' %}">Predict House Price</a>
+            </div>
+        </section>
+
+    </main>
+
+{% endblock content %}

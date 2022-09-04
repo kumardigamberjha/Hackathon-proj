@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block title %}
+        <title>Document</title>
+    {% endblock title %}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+
+    {% block style %}
+    <style>
+
+        /*-------------Reset-------------*/
+        button {
+            background: none;
+            box-shadow: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:focus,
+        input:focus {
+            outline: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /*-------------Layout-------------*/
+        body {
+            line-height: 1.5em;
+            padding: 0;
+            margin: 0;
+        }
+
+        section {
+            height: 100vh;
+        }
+
+        #home {
+            background: linear-gradient(rgba(50,0,0,0.8), rgba(0,0,0,0.3)), url('../../../static/img/bg1.jpg');
+            background-size: 100% 100vh;
+            min-height: 90vh;
+            width: 100%;
+        }
+
+        #predict {
+            background: linear-gradient(rgba(50,0,0,0.8), rgba(0,0,0,0.3)), url('../../../static/img/price.jpg');
+            background-size: 100% 100vh;
+            min-height: 90vh;
+            width: 100%;    
+            margin-top: 10vh;
+        }
+
+        #work {
+            background-color: #888;
+        }
+
+        #contact {
+            background-color: #666;
+        }
+
+        /*-------------Helpers-------------*/
+        .skew {
+            transform: skew(-20deg);
+        }
+
+        .un-skew {
+            transform: skew(20deg);
+        }
+
+        /*-------------Nav-------------*/
+        #nav-wrapper {
+            overflow: hidden;
+            width: 100%;
+            margin: 0 auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        #nav {
+            background-color: #fff;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            font-family: "Saira Semi Condensed", sans-serif;
+            height: 4em;
+            overflow: hidden;
+        }
+
+        #nav.nav-visible {
+            height: 100%;
+            overflow: auto;
+        }
+
+        .nav {
+            display: flex;
+            height: 4em;
+            line-height: 4em;
+            flex-grow: 1;
+        }
+        .logo{
+            padding: 1rem;
+        }
+        .nav-link{
+            padding: 0 1em;
+        }
+
+        span.gradient {
+            background: #0B2B40;
+            background: -webkit-linear-gradient(45deg, #0B2B40, #ff5858);
+            background: linear-gradient(45deg, #0B2B40, #ff5858);
+            padding: 0 1em;
+            position: relative;
+            right: 1em;
+            margin-right: auto;
+        }
+
+        span.gradient:hover {
+            animation-name: logo-hover;
+            animation-duration: 0.3s;
+            animation-fill-mode: forwards;
+            animation-timing-function: cubic-bezier(0.17, 0.57, 0.31, 0.85);
+        }
+
+        h1.logo {
+            font-weight: 300;
+            font-size: 1.75em;
+            line-height: 0.75em;
+            color: #fff;
+        }
+
+        h1.logo a,
+        a:active,
+        a:hover,
+        a:visited {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .nav-link {
+            text-transform: uppercase;
+            text-align: center;
+            border-top: 0.5px solid #ddd;
+        }
+
+        a:link,
+        a:visited,
+        a:active {
+            text-decoration: none;
+            color: #0B2B40;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .btn-nav {
+            color: #0B2B40;
+            padding-left: 2em;
+            padding-right: 2em;
+        }
+
+        @media (min-width: 800px) {
+            #nav-wrapper {
+                overflow: hidden;
+            }
+
+            #nav {
+                overflow: hidden;
+                flex-direction: row;
+            }
+
+            .nav-link {
+                border-top: none;
+            }
+
+            .right {
+                overflow: hidden;
+                flex-direction: row;
+                justify-content: flex-end;
+                position: relative;
+                left: 1.5em;
+                height: auto;
+            }
+
+            .btn-nav {
+                display: none;
+            }
+
+            .nav a:link.active,
+            a:visited.active,
+            a:active.active {
+                background: #0B2B40;
+                background: -webkit-linear-gradient(45deg, #0B2B40, #ff5858);
+                background: linear-gradient(45deg, #0B2B40, #ff5858);
+                color: #fff;
+            }
+
+            .nav-link-span {
+                transform: skew(20deg);
+                display: inline-block;
+            }
+
+            .nav-link {
+                transform: skew(-20deg);
+                color: #777;
+                text-decoration: none;
+            }
+
+            .nav-link:last-child {
+                padding-right: 3em;
+            }
+
+            a:hover.nav-link:not(.active) {
+                color: #444;
+                background: #ddd;
+                background: linear-gradient(45deg, #fff, #ddd);
+            }
+        }
+
+        @keyframes logo-hover {
+            20% {
+                padding-right: 0em;
+            }
+
+            100% {
+                padding-right: 5em;
+            }
+        }
+
+        #text-content{
+            position: absolute;
+            top: 50%;
+            left: 40%;
+        }
+        #text-content a{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color:  black;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 13px;
+            padding: 10px 55px;
+            background-color: white;
+            text-decoration: none;
+        }
+        #text-content a:hover{
+            color: white;
+            background-color: rgba(241, 83, 83, 0.781);
+        }
+    </style>
+    {% endblock style %}
+
+    {% block exstyle %}
+
+    {% endblock exstyle %}
+</head>
+
+<body>
+    {% block navbar %}
+    <header id="nav-wrapper">
+        <nav id="nav">
+            <div class="nav left">
+                <span class="gradient skew">
+                    <h1 class="logo un-skew"><a href="/">American Housing Solution</a></h1>
+                </span>
+                <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+            </div>
+            <div class="nav right">
+                <a href="/" class="nav-link active"><span class="nav-link-span"><span
+                            class="u-nav">Home</span></span></a>
+                <a href="{% url 'price_prediction' %}" class="nav-link"><span class="nav-link-span"><span
+                            class="u-nav">Predict Price</span></span></a>
+                <a href="{% url 'show_all_data' %}" class="nav-link"><span class="nav-link-span"><span
+                                class="u-nav">Plots</span></span></a>
+    
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="nav-link"><span class="nav-link-span"><span
+                    class="u-nav">Logout</span></span></a>
+
+                {% else %}
+                <a href="{% url 'login' %}" class="nav-link"><span class="nav-link-span"><span
+                    class="u-nav">Login</span></span></a>
+                <a href="{% url 'signup' %}" class="nav-link"><span class="nav-link-span"><span
+                                class="u-nav">SignUp</span></span></a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    {% endblock navbar %}
+
+    {% block content %}
+    <main>
+
+        <section id="home">
+            <div id="text-content">
+                <a href="{% url 'price_prediction' %}">House Predictor</a>
+            </div>
+        </section>
+
+    </main>
+    {% endblock content %}
+
+    {% block script %}
+    <script>
+        var util = {
+            mobileMenu() {
+                $("#nav").toggleClass("nav-visible");
+            },
+            windowResize() {
+                if ($(window).width() > 800) {
+                    $("#nav").removeClass("nav-visible");
+                }
+            },
+            scrollEvent() {
+                var scrollPosition = $(document).scrollTop();
+
+                $.each(util.scrollMenuIds, function (i) {
+                    var link = util.scrollMenuIds[i],
+                        container = $(link).attr("href"),
+                        containerOffset = $(container).offset().top,
+                        containerHeight = $(container).outerHeight(),
+                        containerBottom = containerOffset + containerHeight;
+
+                    if (scrollPosition < containerBottom - 20 && scrollPosition >= containerOffset - 20) {
+                        $(link).addClass("active");
+                    } else {
+                        $(link).removeClass("active");
+                    }
+                });
+            }
+        };
+
+        $(document).ready(function () {
+
+            util.scrollMenuIds = $("a.nav-link[href]");
+            $("#menu").click(util.mobileMenu);
+            $(window).resize(util.windowResize);
+            $(document).scroll(util.scrollEvent);
+
+        });
+
+    </script>
+    {% endblock script %}
+</body>
+
+</html>

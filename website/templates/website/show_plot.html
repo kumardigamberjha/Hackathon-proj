@@ -1,0 +1,155 @@
+{% extends 'website/index.html' %}
+
+
+{% block content %}
+<h1 style="margin-top: 181px; text-align: center; color:brown;">Predict House Price</h1>
+<div class="container">
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <label for="date">Date
+      <input type="date" name="date" style="margin-left: 188px; width: 189px;">
+    </label>
+    <br>
+    <!-- <input type="number" name="price" id="price" placeholder="price"> -->
+    <label for="bedrooms">Bedrooms
+      <input type="number" name="bedrooms" style="margin-left: 150px;" id="bedrooms" placeholder="No. Of Bedrooms">
+    </label><br>
+    <label for="bathrooms">Bathrooms
+      <input type="number" name="bathrooms" id="bathrooms" style="margin-left: 145px;"  placeholder="No. Of Bathrooms">
+    </label><br>
+    <label for="sqft_living">Sqft Living
+      <input type="number" name="sqft_living" id="sqft_living"  style="margin-left: 147px;"  placeholder="sqft_living">
+    </label><br>
+    <label for="sqft_lot">Sqft Lot
+      <input type="number" name="sqft_lot" id="sqft_lot" placeholder="sqft_lot" style="margin-left: 167px;" >
+    </label><br>
+    <label for="floors">Floors
+      <input type="number" name="floors" id="floors" placeholder="Floor" style="margin-left: 180px;" >
+    </label><br>
+    <label for="waterfront">Water Front
+      <input type="number" name="waterfront" id="waterfront" placeholder="waterfront 0" style="margin-left: 138px;" >
+    </label><br>
+    <label for="view">View
+      <input type="number" name="view" id="view" placeholder="View 0-5" style="margin-left: 188px;" >
+    </label><br>
+    <label for="condition">Condition
+      <input type="number" name="condition" placeholder="Condition 0-6" style="margin-left: 152px;" >
+    </label><br>
+    <label for="Sqft Above">sqft Above
+      <input type="number" name="sqft_above" placeholder="0000" style="margin-left: 145px;" >
+    </label><br>
+    <label for="sqft_basement">Sqft Basement
+      <input type="number" name="sqft_basement" placeholder="0000" style="margin-left: 120px;" >
+    </label><br>
+    <label for="yr_built">Year Built
+      <input type="number" name="yr_built" placeholder="0000" style="margin-left: 155px;" >
+    </label><br>
+    <label for="yr_renovated">Year Renovated 
+      <input type="number" name="yr_renovated" placeholder="0000" style="margin-left: 112px;" >
+    </label><br>
+    <label for="street">Street
+      <input type="street" name="street" placeholder="0000" style="margin-left: 180px;" >
+    </label><br>
+    <input type="submit" value="submit" style="width:200px; margin-top:25px;margin-left:100px; background-color: rgba(231, 53, 53, 0.877);border-radius:33px;padding: 8px" placeholder="Submit">
+  </form>
+</div>
+
+<h1 style="text-align: center; margin-top: 80px; color:brown;">Predicted House Price</h1>
+<div class="container">
+  {% for i in d1 %}
+  <center><span style="font-size: 2rem;">Rs. {{i}}</span></center>
+  {% endfor %}  
+</div>
+
+
+
+
+<!-- <table>
+  <tr>
+    <th>Price</th>
+    <th>Bedrooms</th>
+    <th>Bathrooms</th>
+    <th>SQFt Living</th>
+    <th>Sqft Lot</th>
+    <th>floor</th>
+    <th>waterfront</th>
+    <th>View</th>
+    <th>Condition</th>
+    <th>sqft_above</th>
+    <th>sqft_basement</th>
+    <th>yr_built</th>
+    <th>yr_renovated</th>
+    <th>Street</th>
+  </tr>
+  <tr>
+    <td>
+      {% for i in d1 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d2 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d3 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d4 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d5 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d6 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d7 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d8 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d9 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d10 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d11 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d12 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+    <td>
+      {% for i in d13 %}
+      {{i}}<br>
+      {% endfor %}
+    </td>
+</table> -->
+
+
+
+{% endblock content %}
